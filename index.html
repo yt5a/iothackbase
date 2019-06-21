@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'/>
+<title>Test IoT - sakura.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<script src="https://sabae.cc/sakura/fukuno.js"></script>
+<script src="https://sabae.cc/sakura/sakura.js"></script>
+<script src="https://sabae.cc/sakura/sakura-setting-2.js"></script>
+<script>
+
+window.onload = function() {
+	var sakura = new Sakuras([SAKURA_TOKEN, SAKURA_TOKEN2], function(id, val) {
+		console.log(id + " から " + val + " を受信！")
+		if (val == 1) {
+			mes.textContent = "1を受信！"
+			document.body.style.backgroundColor = "red"
+		} else if (val == 2) {
+			mes.textContent = "2を受信！"
+			document.body.style.backgroundColor = "white"
+		}
+	})
+	var send = function(val) {
+		sakura.send(module.value, val)
+		mes(sakura.getModule(module.value) + " へ " + Number(val) + " を発信！")
+	}
+}
+</script>
+<style>
+body {
+	font-family: sans-serif;
+	text-align: center;
+	margin-top: 40vh;
+}
+</style>
+</head>
+<body>
+
+<h1 id=mes>IoTのテスト</h1>
+
+</body>
+</html>
