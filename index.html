@@ -13,12 +13,14 @@
 window.onload = function() {
 	var sakura = new Sakuras([SAKURA_TOKEN, SAKURA_TOKEN2], function(id, val) {
 		console.log(id + " から " + val + " を受信！")
-		if (val == 1) {
-			mes.textContent = "1を受信！"
-			document.body.style.backgroundColor = "red"
-		} else if (val == 2) {
-			mes.textContent = "2を受信！"
-			document.body.style.backgroundColor = "white"
+		if (id == "d03") {
+			if (val == 1) {
+				mes.textContent = "1を受信！"
+				document.body.style.backgroundColor = "red"
+			} else if (val == 2) {
+				mes.textContent = "2を受信！"
+				document.body.style.backgroundColor = "white"
+			}
 		}
 	})
 	var send = function(val) {
